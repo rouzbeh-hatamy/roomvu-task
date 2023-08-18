@@ -17,12 +17,13 @@ interface Post {
 }
 
 
-export default function Home() {
+export default function Home({ posts }: { posts: Post[] }) {
+
   return (
     <main className="max-w-3xl mx-auto py-8">
-    <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Overreacted</h1>
-    <ProfileCard />
-  </main>
+      <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Overreacted</h1>
+      <ProfileCard />
+    </main>
   )
 }
 
@@ -33,10 +34,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = await response.json();
     const fetchedPosts: Post[] = data.map((post: any) => ({
       ...post,
-      date: generateDateFromId(post.id),
+      date: generateDateFromId(post.id).toISOString(),
     }));
-    const sortedPosts = fetchedPosts.sort((a, b) => b.date.getTime() - a.date.getTime());
-
+    const sortedPosts = fetchedPosts.sort((a, b) => b.date.valueOf() - a.date.valueOf());
     return {
       props: {
         posts: sortedPosts,
