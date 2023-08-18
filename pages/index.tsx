@@ -2,10 +2,11 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import ProfileCard from '@/components/ProfileCard'
 import { GetServerSideProps } from 'next';
+import PostsList from '@/components/PostsList';
 
 const generateDateFromId = (id: number): Date => {
   const now = new Date();
-  now.setHours(now.getHours() - id);
+  now.setHours(now.getHours() - (id * 3600));
   return now;
 };
 
@@ -23,6 +24,7 @@ export default function Home({ posts }: { posts: Post[] }) {
     <main className="max-w-3xl mx-auto py-8">
       <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Overreacted</h1>
       <ProfileCard />
+      <PostsList posts={posts} />
     </main>
   )
 }

@@ -15,8 +15,8 @@ function ProfileCard() {
                 />
             </div>
             <div>
-                <span className="text-lg  text-gray-800">Personal blog by <Link href="https://mobile.twitter.com/dan_abramov" className='text-primary underline hover:no-underline'>Dan Abramov.</Link></span>
-                <p className="text-gray-800 text-lg ">I explain with words and code.</p>
+                <span className="text-xl  text-gray-800">Personal blog by <Link href="https://mobile.twitter.com/dan_abramov" className='text-primary underline hover:no-underline'>Dan Abramov.</Link></span>
+                <p className="text-gray-800 text-xl ">I explain with words and code.</p>
             </div>
         </div>
 
