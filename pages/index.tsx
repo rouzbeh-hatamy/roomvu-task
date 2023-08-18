@@ -1,21 +1,8 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import ProfileCard from '@/components/ProfileCard'
 import { GetServerSideProps } from 'next';
 import PostsList from '@/components/PostsList';
-
-const generateDateFromId = (id: number): Date => {
-  const now = new Date();
-  now.setHours(now.getHours() - (id * 3600));
-  return now;
-};
-
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-  date: Date;
-}
+import { generateDateFromId } from '@/utils/date';
+import { Post } from '@/types/_post';
 
 
 export default function Home({ posts }: { posts: Post[] }) {
@@ -36,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const data = await response.json();
     const fetchedPosts: Post[] = data.map((post: any) => ({
       ...post,
-      date: generateDateFromId(post.id).toISOString(),
+      date: generateDateFromId(post.id),
     }));
     const sortedPosts = fetchedPosts.sort((a, b) => b.date.valueOf() - a.date.valueOf());
     return {

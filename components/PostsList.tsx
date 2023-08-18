@@ -1,3 +1,4 @@
+import { formatDate } from '@/utils/date';
 import Link from 'next/link';
 import React from 'react';
 
@@ -9,9 +10,6 @@ interface Post {
 }
 
 const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
-    const formatDate = (date: Date): string => {
-        return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
-    };
 
     return (
         <div>
