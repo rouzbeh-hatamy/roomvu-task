@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { formatDate, generateDateFromId } from '@/utils/date';
 import { Post } from '@/types/_post';
+import DarkModeToggle from '@/components/DarkModeToggle';
 
 
 
@@ -15,10 +16,13 @@ export default function PostPage({ post }: { post: Post }) {
 
   return (
     <main className='dark:bg-darkBg min-h-screen'>
-    <div className="max-w-3xl mx-auto py-8 ">
+    <div className="max-w-3xl mx-auto p-8 ">
+      <div className='flex justify-between'>
       <Link href="/">
         <span className="text-primaryLight hover:underline text-3xl font-extrabold">Overreacted</span>
       </Link>
+        <DarkModeToggle />
+        </div>
       <h1 className="text-4xl font-extrabold text-gray-800 mt-10 mb-2 dark:text-white">{post.title}</h1>
       <p className="text-gray-600 mb-2 dark:text-white">{formatDate(new Date(post.date))}</p>
       <p className="text-gray-800 text-xl dark:text-white">{post.body}</p>
