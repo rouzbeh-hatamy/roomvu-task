@@ -3,15 +3,21 @@ import { GetServerSideProps } from 'next';
 import PostsList from '@/components/PostsList';
 import { generateDateFromId } from '@/utils/date';
 import { Post } from '@/types/_post';
+import DarkModeToggle from '@/components/DarkModeToggle';
 
 
 export default function Home({ posts }: { posts: Post[] }) {
 
   return (
-    <main className="max-w-3xl mx-auto py-8">
-      <h1 className="text-4xl font-extrabold text-gray-800 mb-4">Overreacted</h1>
-      <ProfileCard />
-      <PostsList posts={posts} />
+    <main className="py-8 dark:bg-darkBg">
+      <div className="container mx-auto max-w-3xl p-5">
+        <div className='flex justify-between'>
+        <h1 className="text-4xl font-extrabold text-gray-800 mb-4 dark:text-white">Overreacted</h1>
+        <DarkModeToggle />
+        </div>
+        <ProfileCard />
+        <PostsList posts={posts} />
+      </div>
     </main>
   )
 }

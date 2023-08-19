@@ -17,9 +17,9 @@ const PostsList: React.FC<{ posts: Post[] }> = ({ posts }) => {
                 {posts.map((post) => (
                     <Link key={post.id} href={`/${post.id}`}>
                         <li  className="p-4 ">
-                            <h2 className="text-3xl text-primary font-extrabold mb-2">{post.title}</h2>
-                            <p className="text-gray-600 mb-2">{formatDate(new Date(post.date))}</p>
-                            <p className="text-gray-800 text-xl">{post.body.slice(0, 60)}...</p>
+                            <h2 className="text-3xl text-primary font-extrabold mb-2 dark:text-primaryLight">{post.title}</h2>
+                            <p className="text-gray-600 mb-2 dark:text-white">{formatDate(new Date(post.date))}</p>
+                            <p className="text-gray-800 text-xl dark:text-white">{post.body.slice(0, 60)}...</p>
                         </li>
                     </Link>
                 ))}

@@ -6,6 +6,7 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       backgroundImage: {
@@ -15,7 +16,8 @@ const config: Config = {
       },
       colors: {
         primary: '#d23669',
-        primaryLight:"#FFA7C4"
+        primaryLight:"#FFA7C4",
+        darkBg:"#282c35",
       },
     },
   },
