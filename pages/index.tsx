@@ -4,21 +4,27 @@ import PostsList from '@/components/PostsList';
 import { generateDateFromId } from '@/utils/date';
 import { Post } from '@/types/_post';
 import DarkModeToggle from '@/components/DarkModeToggle';
+import Head from 'next/head';
 
 
 export default function Home({ posts }: { posts: Post[] }) {
 
   return (
-    <main className="py-8 dark:bg-darkBg">
-      <div className="container mx-auto max-w-3xl p-5">
-        <div className='flex justify-between'>
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-4 dark:text-white">Overreacted</h1>
-        <DarkModeToggle />
+    <>
+      <Head>
+        <title>Roomvu Task</title>
+      </Head>
+      <main className="py-8 dark:bg-darkBg">
+        <div className="container mx-auto max-w-3xl p-5">
+          <div className='flex justify-between'>
+            <h1 className="text-4xl font-extrabold text-gray-800 mb-4 dark:text-white">Overreacted</h1>
+            <DarkModeToggle />
+          </div>
+          <ProfileCard />
+          <PostsList posts={posts} />
         </div>
-        <ProfileCard />
-        <PostsList posts={posts} />
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
 

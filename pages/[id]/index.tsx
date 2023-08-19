@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { formatDate, generateDateFromId } from '@/utils/date';
 import { Post } from '@/types/_post';
 import DarkModeToggle from '@/components/DarkModeToggle';
+import Head from 'next/head';
 
 
 
@@ -15,6 +16,10 @@ export default function PostPage({ post }: { post: Post }) {
   }
 
   return (
+    <>
+      <Head>
+        <title>Roomvu | {post.title}</title>
+      </Head>
     <main className='dark:bg-darkBg min-h-screen'>
     <div className="max-w-3xl mx-auto p-8 ">
       <div className='flex justify-between'>
@@ -28,6 +33,7 @@ export default function PostPage({ post }: { post: Post }) {
       <p className="text-gray-800 text-xl dark:text-white">{post.body}</p>
     </div>
     </main>
+    </>
   );
 };
 
